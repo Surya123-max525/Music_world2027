@@ -49,8 +49,15 @@ export default function EngiHubLanding() {
     }
   };
 
-  // Fetch real stats from Supabase
+  // Handle Supabase OAuth hash when the browser lands on the homepage
   useEffect(() => {
+    if (typeof window !== "undefined" && window.location.hash.includes("access_token=")) {
+      const fragment = window.location.hash;
+      window.location.href = `/auth/callback${fragment}`;
+      return;
+    }
+
+    // Fetch real stats from Supabase
     const fetchStats = async () => {
       try {
         // Total users
