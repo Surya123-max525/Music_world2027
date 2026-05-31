@@ -24,13 +24,34 @@ export const supabase = typeof window !== 'undefined'
   ? (window.__supabase ??= createSupabaseClient() as SupabaseClientType)
   : createSupabaseClient();
 
+const getGoogleRedirectUrl = () => {
+  if (process.env.NEXT_PUBLIC_SUPABASE_REDIRECT_URL) {
+    return process.env.NEXT_PUBLIC_SUPABASE_REDIRECT_URL;
+  }
+
+  if (process.env.NEXT_PUBLIC_SITE_URL) {
+    return `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`;
+  }
+
+  if (typeof window !== 'undefined') {
+    const origin = window.location.origin;
+    if (origin && !origin.startsWith('chrome-error://')) {
+      return `${origin}/auth/callback`;
+    }
+  }
+
+  return '';
+};
+
 // Auth helpers (adapted from your IEEE-Website patterns)
 export const signInWithGoogle = async () => {
-  const redirectTo = typeof window !== 'undefined'
-    ? `${window.location.origin}/auth/callback`
-    : process.env.NEXT_PUBLIC_SITE_URL
-      ? `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`
-      : process.env.NEXT_PUBLIC_SUPABASE_REDIRECT_URL ?? '';
+  const redirectTo = getGoogleRedirectUrl();
+
+  if (!redirectTo) {
+    throw new Error(
+      'Missing redirect URL for Google sign-in. Set NEXT_PUBLIC_SUPABASE_REDIRECT_URL or NEXT_PUBLIC_SITE_URL.'
+    );
+  }
 
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: 'google',
