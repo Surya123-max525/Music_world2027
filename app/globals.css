@@ -1,0 +1,198 @@
+@import "tailwindcss";
+
+:root {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  
+  /* EngiHub Color System - Deep Navy + Electric Blue + Saffron */
+  --bg-deep: #0A1628;
+  --bg-card: #111F36;
+  --bg-elevated: #1A2A47;
+  
+  --primary: #3B82F6;
+  --primary-dark: #2563EB;
+  --accent: #FF9933;        /* Saffron - Tamil Nadu pride */
+  --accent-green: #10B981;
+  --accent-purple: #8B5CF6;
+  
+  --text-primary: #F8FAFC;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  
+  --border: #1E3A5F;
+  --border-light: #334155;
+  
+  --success: #22C55E;
+  --warning: #F59E0B;
+  --error: #EF4444;
+}
+
+body {
+  font-family: var(--font-geist-sans);
+}
+
+/* Beautiful Glassmorphism + Engineering Theme */
+.glass {
+  background: rgba(17, 31, 54, 0.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-hover:hover {
+  background: rgba(26, 42, 71, 0.95);
+  border-color: rgba(59, 130, 246, 0.3);
+  transform: translateY(-1px);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+}
+
+/* Saffron Accent Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  color: white;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 15px -3px rgb(59 130 246 / 0.4);
+}
+
+.btn-accent {
+  background: linear-gradient(135deg, var(--accent) 0%, #E67E22 100%);
+  color: #0A1628;
+  font-weight: 700;
+}
+
+.btn-accent:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+/* EngiAI Chat Styles */
+.chat-bubble-user {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  border-radius: 18px 18px 4px 18px;
+}
+
+.chat-bubble-ai {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 18px 18px 18px 4px;
+}
+
+/* Tamil + English bilingual badge */
+.bilingual-badge {
+  background: linear-gradient(90deg, #FF9933 0%, #10B981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+/* Filter chips */
+.filter-chip {
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.15s ease;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.filter-chip.active,
+.filter-chip:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: white;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--border-light);
+  border-radius: 3px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Gold headline styling */
+.gold-text {
+  background: linear-gradient(90deg, #FFD700 0%, #FBBF24 55%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #FFD700 0%, #F59E0B 100%);
+  color: #050505;
+  font-weight: 700;
+  box-shadow: 0 15px 30px -15px rgba(255, 215, 0, 0.75);
+}
+
+.btn-gold:hover {
+  filter: brightness(1.05);
+}
+
+/* Bottom Navigation (Mobile App Feel) */
+.bottom-nav {
+  background: rgba(17, 31, 54, 0.98);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid var(--border);
+}
+
+/* Progress Rings */
+.progress-ring {
+  transition: stroke-dashoffset 0.35s;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
+
+/* Project & PYQ Cards */
+.project-card {
+  transition: transform 0.2s cubic-bezier(0.4, 0.0, 0.2, 1), 
+              box-shadow 0.2s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+/* Image Upload Dropzone */
+.dropzone {
+  border: 2px dashed var(--border-light);
+  transition: all 0.2s ease;
+}
+
+.dropzone.dragover,
+.dropzone:hover {
+  border-color: var(--primary);
+  background: rgba(59, 130, 246, 0.05);
+}
+
+/* Responsive Typography */
+@media (max-width: 640px) {
+  .hero-title {
+    font-size: 2.25rem !important;
+    line-height: 2.5rem !important;
+  }
+}

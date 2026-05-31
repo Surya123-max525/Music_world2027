@@ -1,0 +1,21 @@
+{
+  "name": "EngiHub - Engineering Companion",
+  "short_name": "EngiHub",
+  "description": "AI-powered platform for Tamil Nadu engineering students. Snap doubts, get Tamil + English solutions, PYQs, projects & placement prep.",
+  "start_url": "/dashboard",
+  "display": "standalone",
+  "background_color": "#0A1628",
+  "theme_color": "#3B82F6",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
