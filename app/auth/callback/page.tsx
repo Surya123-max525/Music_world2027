@@ -66,6 +66,10 @@ export default function AuthCallbackPage() {
         console.warn("Profile was not found after sign-in. User should still be authenticated.");
       }
 
+      if (typeof window !== "undefined" && window.location.hash.startsWith("#")) {
+        window.history.replaceState(null, "", window.location.pathname + window.location.search);
+      }
+
       router.replace("/dashboard");
     };
 
